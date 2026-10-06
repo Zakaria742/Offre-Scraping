@@ -73,4 +73,14 @@ public class Job {
         return new JSONObject(jsonBody);
     }
 
+    public String getCSV(){
+        String csvBody = String.format("""
+            %s, %s, %s, %s, %s
+        """, Title, Emplacement, OriginalLink, Description, Exigences);
+        return csvBody;
+    }
+    public static String csvHeader(){
+        return "Title, Emplacement, Lien, Description, Exigences\n";
+    }
+
 }

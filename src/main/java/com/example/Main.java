@@ -7,13 +7,30 @@ import java.util.Collection;
 import com.example.jobSquare.jobSquare;
 import com.example.jobPortal.jobPortal;
 import org.json.JSONArray;
-
+import weka.core.Instances;
+import weka.core.converters.CSVLoader;
 import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //jobSquare js = new jobSquare(false);
+        jobSquare js = new jobSquare(true);
         jobPortal jp = new jobPortal(true);
+
+        ArrayList<Job> availableJobs = js.jobs();
+        availableJobs.addAll(jp.jobs());
+
+        Path csvfilePath = Path.of("listings.csv");
+        Path jsonfilePath = Path.of("./listings.json");
+        JSONArray jsonA = new JSONArray();
+        String jobs = Job.csvHeader();
+        for(Job j: availableJobs){
+         
+            jsonA.put(j.getJson());
+            jobs += j.getCSV();
+        }
+        Files.writeString(csvfilePath, jobs);
+        Files.write(jsonfilePath, jsonA.toString().getBytes());
+
         /*
         
         ArrayList<Job> availableJobs = js.jobs();

@@ -26,14 +26,14 @@ public class jobSquare {
                 for (Element job : jobs) {
                     String jobLink = job.attr("href");
                     Document jobDocument = Jsoup.connect(jobLink).get();
-                    String Title = jobDocument.select("h1[class='jd-title']").text();
+                    String Title = jobDocument.select("h1[class='jd-title']").text().split(",")[0];
                     if(watch){
                         System.out.printf("\u001b[2J\u001b[H Total jobs found : %d\n", ++totalJobs);
                         System.out.printf("\u001b[38;2;100;255;100m%c\u001b[0m current job : %s\n", animArray[ ( currentAnimIndex = (currentAnimIndex + 1) % 4 ) ], Title);
                     }
 
                     String Publisher = jobDocument.select("div[class='jd-meta'] > a").text();
-                    String Location = jobDocument.select(".job-card__tag--location").text();
+                    String Location = jobDocument.select(".job-card__tag--location").text().split("[, ]")[0];
                     String ContentSection = jobDocument.select("div[class='jd-content']").text().replace("\"", "");
                     String Description = ContentSection.split("Description de l'emploi")[1];
 
