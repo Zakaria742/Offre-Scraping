@@ -1,55 +1,31 @@
 package com.example;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import com.example.jobSquare.jobSquare;
 import com.example.jobPortal.jobPortal;
 import org.json.JSONArray;
-import weka.core.Instances;
-import weka.core.converters.CSVLoader;
-import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        jobSquare js = new jobSquare(true);
+        // jobSquare js = new jobSquare(true);
         jobPortal jp = new jobPortal(true);
 
-        ArrayList<Job> availableJobs = js.jobs();
-        availableJobs.addAll(jp.jobs());
+        ArrayList<Job> availableJobs = jp.jobs();
+        // //availableJobs.addAll(js.jobs());
 
-        Path csvfilePath = Path.of("listings.csv");
-        Path jsonfilePath = Path.of("./listings.json");
-        JSONArray jsonA = new JSONArray();
-        String jobs = Job.csvHeader();
+        File arffFile = new File("jobPortal.arff");
+        String arffData = "";
         for(Job j: availableJobs){
-         
-            jsonA.put(j.getJson());
-            jobs += j.getCSV();
-        }
-        Files.writeString(csvfilePath, jobs);
-        Files.write(jsonfilePath, jsonA.toString().getBytes());
-
-        /*
-        
-        ArrayList<Job> availableJobs = js.jobs();
-        availableJobs.addAll(jp.jobs());
-
-        Path filePath = Path.of("./listings.json");
-        JSONArray jsonA = new JSONArray();
-        for(Job job : availableJobs){
             try{
-                jsonA.put(job.getJson());
+                arffData += j.arffData();
             }catch(Exception e){
-                System.out.println("\u001b[38;2;255;0;0m\u001b[1mYou got an error right there! \u001b[0m");
-                System.out.println("\u001b[38;2;255;255;0m\u001b[1mLast job : \u001b[0m");
-                System.out.println("\"" + job + "\"");
-                e.printStackTrace();
-                break;
+                continue;
             }
         }
-        Files.write(filePath, jsonA.toString().getBytes());
-        */
+        Files.write(arffFile.toPath(), (Job.arffHeader() + arffData).getBytes());
+        ML ml = new ML("jobPortal.arff");
+
     }
 }
