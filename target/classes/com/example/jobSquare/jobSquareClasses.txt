@@ -1,0 +1,7 @@
+Offre title : h1[class="jd-title"]
+Publisher : div[class="jd-meta"] > a
+Location : span[class="job-card__tag--location"]
+Description : div[class="jd-content"]
+Time after publishing : span[class="job-card__tag--date"]
+Offre expired? : span[class="jd-expiree"] if it exist then expired else then no
+Total applicants : span[class="jd-app-num"] sum of three metrics Rejected, Treated and accepted applicants
