@@ -24,17 +24,17 @@ public class Job {
     public Job(String OriginalLink, String Title, String Emplacement, String DatePublication,
             ArrayList<String> Exigences, String Description, String Publisher, String NiveauEtude, String TypeContrat, String Categorie) {
         this.OriginalLink = OriginalLink;
-        this.Title = Title.replace("\"", "\\\"").replace("'", "\\'").trim();
+        this.Title = Title.replace("\"", "\\\"").trim();
         this.Emplacement = Emplacement;
         this.DatePublication = DatePublication;
-        this.Description = Description.replace("'", "\\'").replace("'", "\\'").trim();
+        this.Description = Description.replace("\"", "\\\"").trim();
         this.Exigences = Exigences;
         this.Publisher = Publisher;
         this.NiveauEtude = NiveauEtude;
         this.TypeContrat = TypeContrat;
         this.Categorie = Categorie;
         this.Id = Current_Id++;
-        Categories.add("'" + Categorie.trim().replace("'", "\\'") + "'");
+        Categories.add("\"" + Categorie.trim() + "\"");
     }
 
     public Job() {
@@ -70,6 +70,9 @@ public class Job {
     public static Set<String> cats(){
         return Categories;
     }
+    public static void setCats(Set<String> cats){
+        Categories = cats;
+    }
 
     public static String arffHeader(){
         return String.format("""
@@ -86,7 +89,7 @@ public class Job {
         """, cats().toString().replace("[", "{").replace("]", "}"));
     }
     public String arffData(){
-        return String.format("'%s', '%s', '%s', '%s', '%s', '%s'\n", Title, Categorie, Description, TypeContrat, Emplacement, NiveauEtude);
+        return String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\"\n", Title, Categorie, Description, TypeContrat, Emplacement, NiveauEtude);
     }
     public JSONObject getJson(){
         String jsonBody = String.format("""

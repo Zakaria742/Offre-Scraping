@@ -41,23 +41,23 @@ public class ML {
             model.setFilter(filter);
             model.setClassifier(new NaiveBayes());
 
-            // model.buildClassifier(train);
+            model.buildClassifier(train);
 
-            // // #Testing
+            // #Testing
 
-            // Evaluation evaluation = new Evaluation(train);
-            // evaluation.evaluateModel(model, test);
+            Evaluation evaluation = new Evaluation(train);
+            evaluation.evaluateModel(model, test);
 
-            // System.out.println(evaluation.toSummaryString());
-            // System.out.println(evaluation.toClassDetailsString());
-            // System.out.println(evaluation.toMatrixString());
+            System.out.println(evaluation.toSummaryString());
+            System.out.println(evaluation.toClassDetailsString());
+            System.out.println(evaluation.toMatrixString());
             // #EndTesting
 
             model.buildClassifier(data);
             Instance testData = new DenseInstance(data.numAttributes());
             testData.setDataset(data);
             testData.setValue(data.attribute("Description"),
-                    "Nous recherchons un(e) technicien(ne) informatique pour installer et configurer les postes de travail, gérer les comptes utilisateurs et assurer le bon fonctionnement du réseau de l’entreprise. Vous aiderez les employés à résoudre les problèmes matériels et logiciels, effectuerez la maintenance courante et documenterez les interventions.");
+                    "Nous recherchons un senior competent capable d'interagir avec l'equipe specialiser dans le domaine developpement des applications et site vitrine");
             testData.setMissing(data.attribute("Categorie"));
 
             double predictor = model.classifyInstance(testData);
