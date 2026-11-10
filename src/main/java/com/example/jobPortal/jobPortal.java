@@ -54,14 +54,13 @@ public class jobPortal {
 
                         String[] categorie_tmp = annonce.select(".careerfy-jobdetail-list > figcaption > span").text()
                                 .split("Offres d'emploi");
-                        String Category = (categorie_tmp.length > 0) ? categorie_tmp[categorie_tmp.length - 1].trim().replace("\"", "\\\"").replace("'", "\\'")
+                        String Category = (categorie_tmp.length > 0) ? categorie_tmp[categorie_tmp.length - 1]
                                 : "null";
                         if (Category.matches("null")) {
                             break;
                         }
 
-                        String Description = jobDetailContent.select("div[class='careerfy-description']").text()
-                                .replace("\"", "\\\"").replace("'", "\\'");
+                        String Description = jobDetailContent.select("div[class='careerfy-description']").text();
                         Element careerfyRow = jobDetailContent.selectFirst("ul[class='careerfy-row']");
 
                         ArrayList<String> Exigences = new ArrayList<>();
