@@ -21,7 +21,7 @@ Le bénéfice recherché est de réduire la saisie manuelle et de disposer de do
 
 
 Sites :
--- https://www.jobportal.ma/ 
--- https://www.jobsquare.ma/
--- https://www.marocannonces.com/categorie/309/Emploi/Offres-emploi.html
--- https://www.rekrute.com/offres-emploi-maroc.html
+- https://www.jobportal.ma/ 
+- https://www.jobsquare.ma/
+- https://www.marocannonces.com/categorie/309/Emploi/Offres-emploi.html
+- https://www.rekrute.com/offres-emploi-maroc.html
