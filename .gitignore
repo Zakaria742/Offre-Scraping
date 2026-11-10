@@ -1,4 +1,7 @@
 *.json
 *.csv
+<<<<<<< HEAD
 *.arff
 *.txt
+=======
+>>>>>>> nabil

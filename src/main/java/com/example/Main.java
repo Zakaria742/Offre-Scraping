@@ -5,13 +5,15 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
-import com.example.anapec.anapec;
+
 import com.example.jobPortal.jobPortal;
+import com.example.mAnnonces.mAnnonces;
+
 import org.json.JSONArray;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        anapec an = new anapec(true);
+        mAnnonces an = new mAnnonces(true);
         // // jobSquare js = new jobSquare(true);
         jobPortal jp = new jobPortal(true);
 

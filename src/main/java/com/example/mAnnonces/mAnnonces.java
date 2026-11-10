@@ -1,4 +1,4 @@
-package com.example.anapec;
+package com.example.mAnnonces;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -11,13 +11,13 @@ import org.jsoup.select.Elements;
 import org.jsoup.nodes.Document;
 import com.example.Job;
 
-public class anapec {
+public class mAnnonces {
     String site = "https://www.marocannonces.com/";
     String originalLink = "https://www.marocannonces.com/categorie/309/Emploi/Offres-emploi/";
     int totalPages = 100;
     private static ArrayList<Job> jobs = new ArrayList<>();
 
-    public anapec(boolean watch) {
+    public mAnnonces(boolean watch) {
         try {
             int currentPage = 1;
             int totalJobs = 0;
